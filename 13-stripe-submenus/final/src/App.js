@@ -1,13 +1,15 @@
 import React from 'react';
-import Modal from './Modal';
+import Navbar from './Navbar';
+import Hero from './Hero';
 import Sidebar from './Sidebar';
-import Home from './Home';
+import Submenu from './Submenu';
 function App() {
   return (
     <>
-      <Home />
-      <Modal />
+      <Navbar />
       <Sidebar />
+      <Hero />
+      <Submenu />
     </>
   );
 }
