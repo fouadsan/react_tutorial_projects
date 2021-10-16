@@ -36,10 +36,9 @@ Variables
   --clr-green-dark: hsl(125, 67%, 44%);
   --clr-green-light: hsl(125, 71%, 66%);
   --clr-black: #222;
-
   --transition: all 0.3s linear;
   --spacing: 0.1rem;
-  --radius: 0.75rem;
+  --radius: 0.25rem;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   --max-width: 1170px;
@@ -61,7 +60,7 @@ Global Styles
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: var(--clr-grey-10);
+  background: var(--clr-white);
   color: var(--clr-grey-1);
   line-height: 1.5;
   font-size: 0.875rem;
@@ -82,7 +81,7 @@ h4 {
   margin-bottom: 0.75rem;
 }
 h1 {
-  font-size: 2.75rem;
+  font-size: 2.5rem;
 }
 h2 {
   font-size: 2rem;
@@ -95,7 +94,6 @@ h4 {
 }
 p {
   margin-bottom: 1.25rem;
-  color: var(--clr-grey-5);
 }
 @media screen and (min-width: 800px) {
   h1 {
@@ -120,105 +118,114 @@ p {
     line-height: 1;
   }
 }
+/*  global classes */
+
+/* section */
+.section {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+@media screen and (min-width: 992px) {
+  .section {
+    width: 95vw;
+  }
+}
 
 /*
 =============== 
-Pagination
+Stock Photos
 ===============
 */
-.section-title {
-  text-align: center;
-  margin: 4rem 0 6rem 0;
-}
-.underline {
-  width: 8rem;
-  height: 0.25rem;
-  background: var(--clr-primary-5);
-  margin: 0 auto;
-}
-.followers {
+.search {
+  padding: 5rem 0 0 0;
   width: 90vw;
   max-width: var(--max-width);
-  margin: 5rem auto;
+  margin: 0 auto;
 }
-.container {
-  display: grid;
-  gap: 2rem;
-  margin-bottom: 4rem;
-}
-@media screen and (min-width: 576px) {
-  .container {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
-}
-.card {
-  background: var(--clr-white);
-  border-radius: var(--radius);
-  box-shadow: var(--light-shadow);
-  padding: 2rem 3.5rem;
-  text-align: center;
-}
-.card img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 0.75rem;
-}
-
-.card h4 {
-  margin-bottom: 1.5rem;
-  font-size: 0.85rem;
-  color: var(--clr-grey-5);
-}
-
-.btn {
-  padding: 0.35rem 0.75rem;
-  letter-spacing: 1.6px;
-  font-size: 0.75rem;
-  color: var(--clr-white);
-  background: var(--clr-primary-5);
-  border-radius: var(--radius);
-  border-color: transparent;
-  text-transform: uppercase;
-  transition: var(--transition);
-  cursor: pointer;
-}
-
-.btn-container {
+.search-form {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
 }
-.page-btn {
-  width: 2rem;
-  height: 2rem;
-  background: var(--clr-primary-7);
-  border-color: transparent;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 0.5rem;
-  transition: var(--transition);
+.form-input {
+  width: 100%;
 }
-.active-btn {
-  background: var(--clr-primary-1);
-  color: var(--clr-white);
-}
-.prev-btn,
-.next-btn {
-  background: transparent;
-  border-color: transparent;
-  font-weight: bold;
+.form-input,
+.submit-btn {
+  padding: 0.75rem 1.25rem;
+  border: none;
   text-transform: capitalize;
   letter-spacing: var(--spacing);
-  margin: 0.5rem;
-  font-size: 1rem;
-  cursor: pointer;
+  font-size: 1.5rem;
+  background: transparent;
+  color: var(--clr-grey-5);
+  border-bottom: 3px solid var(--clr-grey-5);
+}
+.form-input {
+  color: var(--clr-grey-3);
+}
+.form-input::placeholder {
+  color: var(--clr-grey-5);
+}
+.photos {
+  padding: 5rem 0;
+}
+.photos-center {
+  width: 90vw;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+}
+.photo {
+  height: 17.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.photo > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.photo h4 {
+  margin-bottom: 0.5rem;
+}
+.photo p {
+  margin-bottom: 0;
+}
+.user-img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+.photo-info {
+  position: absolute;
+  width: 100%;
+  padding: 1rem;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  transform: translateY(100%);
+  transition: var(--transition);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.photo:hover .photo-info {
+  transform: translateY(0);
+}
+@media screen and (min-width: 576px) {
+  .photos-center {
+    grid-template-columns: repeat(auto-fill, minmax(368px, 1fr));
+  }
+  .search-form {
+    max-width: var(--fixed-width);
+  }
 }
 
-@media screen and (min-width: 775px) {
-  .btn-container {
-    margin: 0 auto;
-    max-width: 700px;
-  }
+.loading {
+  text-align: center;
+  padding: 3rem;
 }
